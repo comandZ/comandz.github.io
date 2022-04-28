@@ -2,18 +2,12 @@ import React from "react";
 import {
     BrowserRouter as Router,
     Route,
-    Routes,
-    useParams
+    Routes
 } from "react-router-dom";
 import PostList from "./containers/PostList";
 import PostDetail from "./containers/PostDetail";
 
 const Routing = () => {
-
-    const PostId = () =>{
-        let { id } = useParams();
-        return <div>Now Showing Post {id}</div>;
-    }
 
     return (
         <Router>

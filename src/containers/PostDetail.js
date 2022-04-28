@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-// import {useHistory} from 'react-router-dom';
-import {Link, useParams, useLocation} from 'react-router-dom'
-
-//import Link from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
+import {styled} from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const PostList = (props) => {
     const [postData, setPostData] = useState([]);
@@ -10,13 +12,16 @@ const PostList = (props) => {
     const [relatedData, setRelatedData] = useState([]);
 
     const {postId, userId} = useParams();
-    // const postId = postId.find((p) => p._id === (id));
-    // const stateParamVal1 = useLocation().state.stateParam;
-    
+
+    const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    }));
 
     useEffect(() => {
-        console.log('Props Param Val - ' + postId);
-        console.log('Props State Val - ' + userId);
 
         const getData = async () => {
             const postApi = `https://jsonplaceholder.typicode.com/posts`;
@@ -28,9 +33,7 @@ const PostList = (props) => {
                 const commentInfo = await commentResp.json();
                 const relatedPost = await fetch (postApi + '?userId=' + userId);
                 const relatedInfo = await relatedPost.json();
-                console.log('postInfo', postInfo);
-                console.log('commentInfo', commentInfo);
-                console.log('related', relatedInfo);
+                
                 setPostData(postInfo);
                 setCommentData(commentInfo);
                 setRelatedData(relatedInfo);
@@ -40,41 +43,54 @@ const PostList = (props) => {
         }
 
         getData();
-    }, []);
+    }, [postId, userId]);
 
     return (
         <div>
-            <Link to={'/'}>Return Home</Link>
-            {postData.map(info => (
-                <div>
-                    <h2>{info.title}</h2>
-                    <div>
-                        <p>{info.body}</p>
-                    </div>
-                </div>
-            ))}
-            <div>
-                {commentData.map(comments => (
-                    <p>{comments.body}</p>
-                ))}
-            </div>
-            <div>
-                <ul>
-                    {relatedData.map((article, index) => (
-                        <li>
-                            <Link 
-                                to={{
-                                    pathname: '/postDetail/'+article.id+'/'+article.userId,
-                                    state: {stateParam: true}
-                                }} 
-                                key={'Post' + index}
-                            >
-                                {article.title}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            <Link to={'/'}>
+                <Button variant='contained' color='primary'>Return Home</Button>
+            </Link>
+            <Grid container spacing={2}>
+                <Grid item xs={8}>
+                    <Item>
+                        {postData.map((info, index) => (
+                            <div key={'Post'+index}>
+                                <h2>{info.title}</h2>
+                                <div>
+                                    <p>{info.body}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </Item>
+                    <Item>
+                        <h2>Post Comments</h2>
+                        {commentData.map((comments, index) => (
+                            <div key={'Comment'+index}>
+                                <p>{comments.body}</p>
+                            </div>
+                        ))}
+                    </Item>
+                </Grid>
+                <Grid item xs={4}>
+                    <h2>Posts From This Author</h2>
+                    <ul>
+                        {relatedData.map((article, index) => (
+                            <li>
+                                <Link 
+                                    to={{
+                                        pathname: '/postDetail/'+article.id+'/'+article.userId,
+                                        state: {stateParam: true}
+                                    }} 
+                                    key={'Post' + index}
+                                >
+                                    {article.title}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Grid>
+            </Grid>
+            
         </div>
     )
 };

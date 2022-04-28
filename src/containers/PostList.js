@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 
 const PostList = () => {
     const [postData, setPostData] = useState([]);
@@ -11,7 +13,6 @@ const PostList = () => {
             try {
                 const resp = await fetch (postApi);
                 const data = await resp.json();
-                console.log('postInfo', data);
                 setPostData(data);
             } catch (err) {
                 console.error(err);
@@ -21,34 +22,34 @@ const PostList = () => {
         getData();
     }, []);
 
-    function setHref(post) {
-        let h_ref = '/postDetail?' + post.Id;
-        return h_ref;
-    }
-
-    function renderPostList(){
-        return postData.map((info, index) => {
-            return(
-                <Link 
-                    to={{
-                        pathname: '/postDetail/'+info.id+'/'+info.userId,
-                        state: {stateParam: true}
-                    }} 
-                    key={'Post' + index}
-                >
-                    <h2>{info.Name}</h2>
-                    <div>
-                        <p>{info.title}</p>
-                    </div>
-                </Link>
-            )
-        })
-    }
-
     return (
         <div>
-            <h1>Testing Heading</h1>
-            {renderPostList()}
+            <h1>Post Listing</h1>
+            <Grid 
+                container 
+                spacing={3}
+                justifyContent='center'
+                alignItems='stretch'
+            >
+                {postData.map((info, index) => (
+                    <Grid item xs={4} key={'PostItem' + index}>
+                        <Link 
+                            to={{
+                                pathname: '/postDetail/'+info.id+'/'+info.userId,
+                                state: {stateParam: true}
+                            }} 
+                            
+                        >
+                            <Button variant='contained' color='primary'>
+                                <h2>{info.Name}</h2>
+                                <div>
+                                    <p>{info.title}</p>
+                                </div>
+                            </Button>
+                        </Link>
+                    </Grid>
+                ))}
+            </Grid>
         </div>
     )
 };
