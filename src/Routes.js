@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import PostList from "./containers/PostList";
 import PostDetail from "./containers/PostDetail";
+import Socks from "./containers/Socks";
+import Testing from "./containers/Testing";
 
 const Routing = () => {
 
@@ -15,6 +17,8 @@ const Routing = () => {
                 <Route exact path="/" element={<PostList/>}/>
                 <Route path="/postDetail/:postId/:userId" element={<PostDetail/>}/>
                 <Route path="/postDetail/:postId" element={<PostDetail/>}/>
+                <Route path="/socks" element={<Socks/>}/>
+                <Route path="/testing" element={<Testing/>}/>
             </Routes>
         </Router>
     );
