@@ -1,4 +1,4 @@
-import './App.css';
+import './assets/sass/App.scss';
 import Routing from './Routes';
 
 function App() {

@@ -94,9 +94,17 @@ const Testing = () => {
 
         const string = arr.join('\n');
 
-        console.log(arr);
         console.log(string);
         
+    }
+
+    function es5Tut(stuff) {
+        let x = 10;
+        if (x == 10) {
+            let x = 20;
+            console.log(x);
+        }
+        console.log(x);
     }
     
     const funOnce = execOnce(fizzBuzz(15));
