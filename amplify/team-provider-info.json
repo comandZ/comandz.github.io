@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-personalwork-dev-153309-authRole",
+      "UnauthRoleArn": "arn:aws:iam::141115793022:role/amplify-personalwork-dev-153309-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::141115793022:role/amplify-personalwork-dev-153309-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-personalwork-dev-153309-deployment",
+      "UnauthRoleName": "amplify-personalwork-dev-153309-unauthRole",
+      "StackName": "amplify-personalwork-dev-153309",
+      "StackId": "arn:aws:cloudformation:us-east-1:141115793022:stack/amplify-personalwork-dev-153309/e0f5be00-4676-11ed-a4ab-0a4c58736617",
+      "AmplifyAppId": "d2rajphmy5cc7p"
+    },
+    "categories": {
+      "auth": {
+        "personalworke045d563": {}
+      }
+    }
+  }
+}

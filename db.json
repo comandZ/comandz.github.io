@@ -1,0 +1,63 @@
+{
+  "posts": [
+    {
+      "title": "1st blog",
+      "body": "Greetings.",
+      "author": "Han Solo",
+      "id": 1
+    },
+    {
+      "title": "2nd blog",
+      "body": "Hello.",
+      "author": "James T Kirk",
+      "id": 2
+    },
+    {
+      "title": "3rd blog",
+      "body": "Hi",
+      "author": "Malcom Rynalds",
+      "id": 3
+    },
+    {
+      "title": "New Thing",
+      "body": "This is a body of a post, fuck",
+      "author": "Anmol",
+      "id": 4
+    },
+    {
+      "title": "Added Blog",
+      "body": "Posting a body for this blog",
+      "author": "Shubham",
+      "id": 5
+    },
+    {
+      "title": "Another Added Post",
+      "body": "Here is a second addition, hopefully this one works better.\n",
+      "author": "Shubham",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "title": "1st blog",
+      "body": "Greetings.",
+      "author": "Han Solo",
+      "id": 1
+    },
+    {
+      "title": "2nd blog",
+      "body": "Hello.",
+      "author": "James T Kirk",
+      "id": 2
+    },
+    {
+      "title": "3rd blog",
+      "body": "Hi",
+      "author": "Malcom Rynalds",
+      "id": 3
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

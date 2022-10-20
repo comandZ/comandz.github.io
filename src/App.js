@@ -1,11 +1,16 @@
 import './assets/sass/App.scss';
-import Routing from './Routes';
+import SecNav from './components/SecNav';
+import Routes from './Routes';
 
 function App() {
   return (
     <div className="App">
+      <div className='mastHead'>
+        <span>working</span>
+        <SecNav/>
+      </div>
       <div className='listing'>
-        <Routing/>
+        <Routes/>
       </div>
     </div>
   );
